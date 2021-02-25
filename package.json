@@ -1,11 +1,10 @@
 {
   "scripts": {
-    "start": "parcel index.html",
-    "predeploy": "rmdir dist -Force -Recursive; parcel build index.html --public-url /mintxt",
+    "start": "http-server ./src",
+    "predeploy": "rm dist -r -f && mkdir dist && cp src/*.* dist",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0",
-    "parcel": "^1.12.4"
+    "gh-pages": "^3.1.0"
   }
 }
