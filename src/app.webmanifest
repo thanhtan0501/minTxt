@@ -14,13 +14,12 @@
       "type": "image/png"
     }
   ],
-  "scope": "/",
-  "start_url": "/index.html",
+  "start_url": "/mintxt/",
   "display": "standalone",
   "background_color": "#202b38",
   "theme_color": "#202b38",
   "share_target": {
-    "action": "/index.html",
+    "action": "index.html",
     "method": "GET",
     "enctype": "application/x-www-form-urlencoded",
     "params": {
