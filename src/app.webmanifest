@@ -2,7 +2,6 @@
   "name": "Mintxt",
   "short_name": "Mintxt",
   "description": "A Minimalist Text Editor",
-  "categories": "utilities",
   "icons": [
     {
       "src": "icons/android-chrome-192x192.png",
@@ -17,6 +16,6 @@
   ],
   "start_url": "index.html",
   "display": "standalone",
-  "background-color": "#202b38",
-  "theme-color": "#202b38"
+  "background_color": "#202b38",
+  "theme_color": "#202b38"
 }
