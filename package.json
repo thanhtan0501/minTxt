@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "http-server ./src",
-    "predeploy": "rm dist -r -f && cp -r src/ dist/",
+    "cleanup": "rm dist -r -f",
+    "predeploy": "cleanup && cp -r src/ dist/",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
