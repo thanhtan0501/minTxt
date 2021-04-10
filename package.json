@@ -1,9 +1,9 @@
 {
   "scripts": {
     "start": "http-server ./src",
-    "cleanup": "rm dist -r -f",
-    "predeploy": "cleanup && cp -r src/ dist/",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "cp -r src/ dist/",
+    "deploy": "gh-pages -d dist",
+    "postdeploy": "rm dist -r -f"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0"
