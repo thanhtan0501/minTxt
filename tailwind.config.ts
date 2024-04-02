@@ -8,13 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
       backgroundColor: {
         "second-color": "var(--second-color)",
+        "third-color": "var(--third-color)",
+      },
+      borderColor: {
         "third-color": "var(--third-color)",
       },
       spacing: {
@@ -22,6 +20,7 @@ const config: Config = {
       },
       colors: {
         "text-color": "var(--text-color)",
+        "third-color": "var(--third-color)",
       },
       borderRadius: { "button-rounded": "var(--spacing)" },
     },

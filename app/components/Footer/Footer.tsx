@@ -1,9 +1,34 @@
-import React from 'react'
+"use client";
+
+import { store } from "@/app/stores";
+import React, { useEffect, useState } from "react";
+
+export const updateWordCount = (text: string) => {
+  let noWord = text.match(/\S+/g)?.length || 0; // Alternative: /\w+/g
+  let noChar = text.length;
+  return { noChar, noWord };
+};
 
 const Footer = () => {
-  return (
-    <div>Footer</div>
-  )
-}
+  let { data, isShowFooter } = store();
+  const [word, setWord] = useState({
+    noChar: 0,
+    noWord: 0,
+  });
 
-export default Footer
+  useEffect(() => {
+    const result = updateWordCount(data);
+    setWord(result);
+  }, [data]);
+
+  return (
+    <footer className={`items-center justify-center ${isShowFooter ? "flex" : "hidden"}`}>
+      <div className=" text-third-color text-[1rem] border-0 rounded-button-rounded mt-0 mx-auto mb-margin-spacing flex gap-2">
+        <span>{word.noWord}w</span>
+        <span>{word.noChar}c</span>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

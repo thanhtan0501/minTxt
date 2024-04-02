@@ -24,12 +24,44 @@
     --third-color: #415771;
   }
 }
+html {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: -webkit-fill-available;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 body {
   color: rgb(var(--text-color));
   background: 
     rgb(var(--background-dark));
   overflow: hidden;
+  font-family: var(--prime-font);
+}
+
+
+/* Scrollbar */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: calc(var(--spacing)*2);
+  height: calc(var(--spacing)*2);
+  background-color: var(--gray-5);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--prime-color);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--third-color);
 }
 
 button{
