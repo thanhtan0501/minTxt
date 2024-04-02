@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --prime-color: #202b38;
+  --prime-font: Candara, Arial, serif;
+  --spacing: 3px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: 255, 255, 255;
+    --background-dark: 32, 43, 56;
+    --second-color: #161f27;
+    --third-color: #415771;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: 255, 255, 255;
+    --background-dark: 32, 43, 56;
+    --second-color: #161f27;
+    --third-color: #415771;
+  }
+}
+
+body {
+  color: rgb(var(--text-color));
+  background: 
+    rgb(var(--background-dark));
+  overflow: hidden;
+}
+
+button{
+  flex:none;
+  outline: none;
+  border: none;
+  scroll-snap-align: start;
+}
+
