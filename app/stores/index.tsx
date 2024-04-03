@@ -9,9 +9,11 @@ export interface StoreTypes {
     selStart: number;
     selEnd: number;
   };
+  fontSize: number;
   setPositionCursor: (value: { selStart: number; selEnd: number }) => void;
   setIsWrap: (value: boolean) => void;
   setData: (value: string) => void;
+  setFontSize: (value: number) => void;
   setIsShowFooter: (value: boolean) => void;
 }
 
@@ -20,6 +22,7 @@ export const store = create<StoreTypes>()(
     persist(
       (set) => ({
         data: "",
+        fontSize: 1,
         isShowFooter: true,
         isWrap: true,
         positionCursor: { selStart: 0, selEnd: 0 },
@@ -31,6 +34,7 @@ export const store = create<StoreTypes>()(
             },
           }),
         setData: (value: string) => set({ data: value }),
+        setFontSize: (value: number) => set({ fontSize: value }),
         setIsWrap: (value: boolean) => set({ isWrap: value }),
         setIsShowFooter: (value: boolean) => set({ isShowFooter: value }),
       }),

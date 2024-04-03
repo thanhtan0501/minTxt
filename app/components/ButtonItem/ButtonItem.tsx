@@ -1,43 +1,23 @@
 import { StoreTypes, store } from "@/app/stores";
-import React from "react";
+import React, { ReactElement } from "react";
 
 interface ButtonTypes {
-  text: string;
-  onClickButton: ({
-    data,
-    setData,
-    isShowFooter,
-    setIsShowFooter,
-    setIsWrap,
-    isWrap,
-    positionCursor,
-    setPositionCursor,
-  }: StoreTypes) => void;
+  icon: ReactElement;
+  onClickButton: (data: StoreTypes) => void;
   title: string;
 }
 
-const ButtonItem = ({ text, onClickButton, title }: ButtonTypes) => {
-  let { data, setData, isShowFooter, setIsShowFooter, setIsWrap, isWrap, positionCursor, setPositionCursor } = store();
+const ButtonItem = ({ icon, onClickButton, title }: ButtonTypes) => {
+  let data = store();
 
   return (
     <button
       type="button"
-      className="bg-second-color text-text-color w-[35px] h-[35px] m-margin-spacing transition-all hover:bg-third-color rounded-button-rounded truncate"
+      className="bg-second-color text-text-color w-[35px] h-[35px] m-margin-spacing transition-all hover:bg-third-color rounded-button-rounded truncate flex items-center justify-center"
       title={title}
-      onClick={() =>
-        onClickButton({
-          data,
-          setData,
-          isShowFooter,
-          setIsShowFooter,
-          setIsWrap,
-          isWrap,
-          positionCursor,
-          setPositionCursor,
-        })
-      }
+      onClick={() => onClickButton(data)}
     >
-      {text}
+      {icon}
     </button>
   );
 };
