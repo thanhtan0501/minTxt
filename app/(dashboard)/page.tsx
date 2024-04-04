@@ -7,7 +7,6 @@ export default function Home() {
 
   useEffect(() => {
     const value = window.innerWidth;
-
     if (value > 500) {
       console.log(value);
       setFontSize(1.5);
