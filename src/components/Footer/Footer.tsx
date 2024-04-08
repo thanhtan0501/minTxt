@@ -1,7 +1,7 @@
 "use client";
 
-import { store } from "@/app/stores";
 import React, { useEffect, useState } from "react";
+import { store } from "../../stores";
 
 export const updateWordCount = (text: string) => {
   let noWord = text.match(/\S+/g)?.length || 0; // Alternative: /\w+/g

@@ -1,14 +1,12 @@
-"use client";
-import { useEffect } from "react";
-import { store } from "../stores";
+import React, { useEffect } from "react";
+import { store } from "../../stores";
 
-export default function Home() {
+const MainContent = () => {
   let { data, setData, isWrap, setPositionCursor, fontSize, setFontSize } = store();
 
   useEffect(() => {
     const value = window.innerWidth;
     if (value > 500) {
-      console.log(value);
       setFontSize(1.5);
     } else if (value > 800) {
       setFontSize(Number(1.7));
@@ -25,7 +23,6 @@ export default function Home() {
     let selEnd = e.target.selectionEnd;
     setPositionCursor({ selStart, selEnd });
   };
-
   return (
     <div className="w-full h-full p-[calc(var(--spacing)*2)] flex">
       <textarea
@@ -40,4 +37,6 @@ export default function Home() {
       ></textarea>
     </div>
   );
-}
+};
+
+export default MainContent;

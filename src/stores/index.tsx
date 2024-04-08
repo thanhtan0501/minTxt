@@ -9,9 +9,11 @@ export interface StoreTypes {
     selStart: number;
     selEnd: number;
   };
+  themeColor: string;
   fontSize: number;
   setPositionCursor: (value: { selStart: number; selEnd: number }) => void;
   setIsWrap: (value: boolean) => void;
+  setThemeColor: (value: string) => void;
   setData: (value: string) => void;
   setFontSize: (value: number) => void;
   setIsShowFooter: (value: boolean) => void;
@@ -21,6 +23,7 @@ export const store = create<StoreTypes>()(
   devtools(
     persist(
       (set) => ({
+        themeColor: "Default",
         data: "",
         fontSize: 1,
         isShowFooter: true,
@@ -33,6 +36,7 @@ export const store = create<StoreTypes>()(
               selEnd: value.selEnd,
             },
           }),
+        setThemeColor: (value: string) => set({ themeColor: value }),
         setData: (value: string) => set({ data: value }),
         setFontSize: (value: number) => set({ fontSize: value }),
         setIsWrap: (value: boolean) => set({ isWrap: value }),

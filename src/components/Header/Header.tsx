@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
+import { ButtonItems } from "../../utils/buttonItems";
 import ButtonItem from "../ButtonItem/ButtonItem";
-import { ButtonItems } from "@/app/utils/buttonItems";
 import ThemeChanger from "../ThemeChanger/ThemeChanger";
 
 const Header = () => {

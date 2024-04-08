@@ -28,7 +28,6 @@ const insertText = (
   let old = data;
 
   if (closeText === undefined) closeText = "";
-  console.log(positionCursor.selStart, positionCursor.selEnd);
 
   let newData =
     old.slice(0, positionCursor.selStart) +

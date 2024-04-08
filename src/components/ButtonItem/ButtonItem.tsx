@@ -1,5 +1,5 @@
-import { StoreTypes, store } from "@/app/stores";
 import React, { ReactElement } from "react";
+import { StoreTypes, store } from "../../stores";
 
 interface ButtonTypes {
   icon: ReactElement;
