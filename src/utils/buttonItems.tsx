@@ -150,6 +150,7 @@ export const ButtonItems = [
         textField.setSelectionRange(selStart, selEnd);
         textField.focus();
       }
+      data.setPositionCursor({ selStart: selEnd, selEnd });
       data.setData(newData);
     },
   },
@@ -166,6 +167,7 @@ export const ButtonItems = [
         textField.setSelectionRange(selStart, selEnd);
         textField.focus();
       }
+      data.setPositionCursor({ selStart: selEnd, selEnd });
       data.setData(newData);
     },
   },
