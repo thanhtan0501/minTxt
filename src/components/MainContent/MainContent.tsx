@@ -31,9 +31,12 @@ const MainContent = () => {
           style={{ fontSize: `${fontSize}rem` }}
           value={data}
           onChange={handleChangeInput}
-          onKeyDown={insertMyText}
+          onKeyUp={insertMyText}
           wrap={isWrap ? "soft" : "off"}
-          onClick={insertMyText}
+          onMouseOut={(e: any) => {
+            e.preventDefault();
+            insertMyText(e);
+          }}
         ></textarea>
       </div>
     </>

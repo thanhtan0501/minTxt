@@ -38,17 +38,6 @@ const insertText = (
     selStart: positionCursor.selStart + openText.length,
     selEnd: positionCursor.selEnd + (closeText.length || openText.length),
   });
-  setPositionCursorInText(positionCursor, openText, closeText);
-};
-
-const setPositionCursorInText = (
-  positionCursor: {
-    selStart: number;
-    selEnd: number;
-  },
-  openText?: string,
-  closeText?: string
-) => {
   const textField = document.getElementById("textareaID") as HTMLInputElement;
   setTimeout(() => {
     textField.setSelectionRange(
@@ -148,6 +137,11 @@ export const ButtonItems = [
       }
       const newData = old.slice(0, selStart) + selected + old.slice(selEnd);
       data.setData(newData);
+      const textField = document.getElementById("textareaID") as HTMLInputElement;
+      setTimeout(() => {
+        textField.setSelectionRange(data.positionCursor.selStart, data.positionCursor.selEnd);
+        textField.focus();
+      }, 100);
     },
   },
   {
@@ -159,10 +153,13 @@ export const ButtonItems = [
       let old = data.data;
       const newData = old.slice(0, selStart) + old.slice(selStart, selEnd).toUpperCase() + old.slice(selEnd);
 
-      setPositionCursorInText(data.positionCursor);
-
-      data.setPositionCursor({ selStart, selEnd });
       data.setData(newData);
+      data.setPositionCursor({ selStart, selEnd });
+      const textField = document.getElementById("textareaID") as HTMLInputElement;
+      setTimeout(() => {
+        textField.setSelectionRange(data.positionCursor.selStart, data.positionCursor.selEnd);
+        textField.focus();
+      }, 100);
     },
   },
   {
@@ -174,9 +171,13 @@ export const ButtonItems = [
 
       let old = data.data;
       const newData = old.slice(0, selStart) + old.slice(selStart, selEnd).toLowerCase() + old.slice(selEnd);
-      setPositionCursorInText(data.positionCursor);
       data.setPositionCursor({ selStart, selEnd });
       data.setData(newData);
+      const textField = document.getElementById("textareaID") as HTMLInputElement;
+      setTimeout(() => {
+        textField.setSelectionRange(data.positionCursor.selStart, data.positionCursor.selEnd);
+        textField.focus();
+      }, 100);
     },
   },
   {
