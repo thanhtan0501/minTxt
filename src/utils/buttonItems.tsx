@@ -45,7 +45,7 @@ const insertText = (
       positionCursor.selEnd + (closeText?.length || openText?.length || 0)
     );
     textField.focus();
-  }, 100);
+  }, 10);
 };
 
 export const ButtonItems = [
