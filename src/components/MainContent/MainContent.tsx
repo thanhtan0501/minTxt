@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { store } from "../../stores";
 
 const MainContent = () => {
   let { data, setData, isWrap, setPositionCursor, fontSize, setFontSize } = store();
-
   useEffect(() => {
     const value = window.innerWidth;
     if (value > 500) {
@@ -24,18 +23,20 @@ const MainContent = () => {
     setPositionCursor({ selStart, selEnd });
   };
   return (
-    <div className="w-full h-full p-[calc(var(--spacing)*2)] flex">
-      <textarea
-        id="textareaID"
-        className={`flex-1 w-full h-full grow-[2]  bg-second-color text-text-color rounded-[calc(var(--spacing)*2)] border border-third-color outline-0 resize-none p-[0.5rem] text-[1.3rem] min-[500px]:text-[1.5rem] min-[800px]:text-[1.7rem]`}
-        autoFocus
-        style={{ fontSize: `${fontSize}rem` }}
-        value={data}
-        onChange={handleChangeInput}
-        wrap={isWrap ? "soft" : "off"}
-        onClick={insertMyText}
-      ></textarea>
-    </div>
+    <>
+      <div className="w-full h-full p-[calc(var(--spacing)*2)] flex">
+        <textarea
+          id="textareaID"
+          className={`flex-1 w-full h-full grow-[2]  bg-second-color text-text-color rounded-[calc(var(--spacing)*2)] border border-third-color outline-0 resize-none p-[0.5rem] text-[1.3rem] min-[500px]:text-[1.5rem] min-[800px]:text-[1.7rem]`}
+          style={{ fontSize: `${fontSize}rem` }}
+          value={data}
+          onChange={handleChangeInput}
+          onKeyDown={insertMyText}
+          wrap={isWrap ? "soft" : "off"}
+          onClick={insertMyText}
+        ></textarea>
+      </div>
+    </>
   );
 };
 

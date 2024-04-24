@@ -17,15 +17,11 @@ const insertText = (
     selStart: number;
     selEnd: number;
   },
-  // setPositionCursor: (value: { selStart: number; selEnd: number }) => void,
-  data: string,
+  data: StoreTypes,
   openText: string,
   closeText?: string
 ) => {
-  // If supplied just one: insert {openText}.
-  // If supplied both: insert or wrap with both.
-
-  let old = data;
+  let old = data.data;
 
   if (closeText === undefined) closeText = "";
 
@@ -35,12 +31,32 @@ const insertText = (
     old.slice(positionCursor.selStart, positionCursor.selEnd) +
     closeText +
     old.slice(positionCursor.selEnd);
+
+  data.setData(newData);
+
+  data.setPositionCursor({
+    selStart: positionCursor.selStart + openText.length,
+    selEnd: positionCursor.selEnd + (closeText.length || openText.length),
+  });
+  setPositionCursorInText(positionCursor, openText, closeText);
+};
+
+const setPositionCursorInText = (
+  positionCursor: {
+    selStart: number;
+    selEnd: number;
+  },
+  openText?: string,
+  closeText?: string
+) => {
   const textField = document.getElementById("textareaID") as HTMLInputElement;
-  if (textField) {
-    textField.setSelectionRange(positionCursor.selStart + openText.length, positionCursor.selEnd + openText.length);
+  setTimeout(() => {
+    textField.setSelectionRange(
+      positionCursor.selStart + (openText?.length || 0),
+      positionCursor.selEnd + (closeText?.length || openText?.length || 0)
+    );
     textField.focus();
-  }
-  return newData;
+  }, 100);
 };
 
 export const ButtonItems = [
@@ -71,24 +87,21 @@ export const ButtonItems = [
     icon: <GrBlockQuote size={20} />,
     title: "Quote",
     onClickButton: (data: StoreTypes) => {
-      const res = insertText(data.positionCursor, data.data, "“", "”");
-      data.setData(res);
+      insertText(data.positionCursor, data, "“", "”");
     },
   },
   {
     icon: <RxDash size={20} />,
     title: "En Dash",
     onClickButton: (data: StoreTypes) => {
-      const res = insertText(data.positionCursor, data.data, "–");
-      data.setData(res);
+      insertText(data.positionCursor, data, "–");
     },
   },
   {
     icon: <BsDash size={20} />,
     title: "Em Dash",
     onClickButton: (data: StoreTypes) => {
-      const res = insertText(data.positionCursor, data.data, "—");
-      data.setData(res);
+      insertText(data.positionCursor, data, "—");
     },
   },
   {
@@ -145,12 +158,10 @@ export const ButtonItems = [
       let selEnd = data.positionCursor.selEnd;
       let old = data.data;
       const newData = old.slice(0, selStart) + old.slice(selStart, selEnd).toUpperCase() + old.slice(selEnd);
-      const textField = document.getElementById("textareaID") as HTMLInputElement;
-      if (textField) {
-        textField.setSelectionRange(selStart, selEnd);
-        textField.focus();
-      }
-      data.setPositionCursor({ selStart: selEnd, selEnd });
+
+      setPositionCursorInText(data.positionCursor);
+
+      data.setPositionCursor({ selStart, selEnd });
       data.setData(newData);
     },
   },
@@ -160,14 +171,11 @@ export const ButtonItems = [
     onClickButton: (data: StoreTypes) => {
       let selStart = data.positionCursor.selStart;
       let selEnd = data.positionCursor.selEnd;
+
       let old = data.data;
       const newData = old.slice(0, selStart) + old.slice(selStart, selEnd).toLowerCase() + old.slice(selEnd);
-      const textField = document.getElementById("textareaID") as HTMLInputElement;
-      if (textField) {
-        textField.setSelectionRange(selStart, selEnd);
-        textField.focus();
-      }
-      data.setPositionCursor({ selStart: selEnd, selEnd });
+      setPositionCursorInText(data.positionCursor);
+      data.setPositionCursor({ selStart, selEnd });
       data.setData(newData);
     },
   },
