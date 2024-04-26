@@ -159,7 +159,7 @@ export const ButtonItems = [
       setTimeout(() => {
         textField.setSelectionRange(data.positionCursor.selStart, data.positionCursor.selEnd);
         textField.focus();
-      }, 100);
+      }, 10);
     },
   },
   {
@@ -177,7 +177,7 @@ export const ButtonItems = [
       setTimeout(() => {
         textField.setSelectionRange(data.positionCursor.selStart, data.positionCursor.selEnd);
         textField.focus();
-      }, 100);
+      }, 10);
     },
   },
   {
